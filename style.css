@@ -1,0 +1,81 @@
+body {
+  background-color: #f1f2f4;
+}
+
+.main {
+  background-image: url(img/white_rain.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.addition {
+  background-color: #f1f2f4;
+}
+
+.current_city {
+  position: absolute;
+  top: 60%;
+  left: 1%;
+}
+#current_temp{
+  font-size: 250%;
+}
+#city{
+  font-size: 80%;
+}
+
+.current_emoji {
+  position: absolute;
+  top: 65%;
+  right: 0;
+  font-size: 400%;
+}
+
+.current_data {
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  font-size: 20%;
+
+}
+
+.current_emoji_data {
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+  font-size: 100%;
+  margin: 0;
+}
+
+.card-group {
+  margin: 5% 10%;
+}
+
+
+#cels, #fahr, .dash{
+  font-size: 3vmin;
+}
+
+
+.card-text {
+  font-size: 2.5vmin;
+}
+
+.col-8,
+.col-4,
+.city {
+  margin: 2% 0;
+}
+.col-2 {
+  text-align: center;
+  font-size: 2vmin;
+}
+.day_emoji {
+  font-size: 6vmin;
+}
+
+.day,
+.day_emoji,
+.temperature {
+  text-align: center;
+}
