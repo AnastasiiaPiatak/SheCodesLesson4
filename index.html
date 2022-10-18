@@ -22,32 +22,36 @@
     <div class="card-group">
       <div class="card main">
         <div class="card-body">
-          <div class="row">
-            <div class="col-9 current_city">
-              <h1 class="card-title">
-                <span id="current_temp">12°</span> 
-                <span id="city">London</span>
-              </h1>
-            </div>
-            <div class="col-3 current_emoji card-title">
-             <i class="fa-solid fa-cloud-rain"></i>
-            </div>
-          </div>
-      
-          <div class="row">
-            <div class="col-9 current_data">
-              <p class="card-text">
-                <span id="current_hour">11</span>:<span id="current_minutes"
-                  >00</span
-                >
-                - <span id="current_weekday">Saturday</span>,
-                <span id="current_date">10</span>
-                <span id="current_month">Oct</span>
-                <span id="current_year">`22</span>
-              </p>
-            </div>
-            <div class="col-3 current_emoji_data">
-              <p class="data_title" id="weather_discription">Rainy</p>
+          <div class="main_part">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-3 main_temp">
+                  <span id="current_temp">12°</span>
+                </div>
+                <div class="col-xs-9 current_data">
+                  <div class="row">
+                    <div class="col-9"><span id="city">London</span></div>
+                    <div class="col-3 current_emoji">
+                      <i class="fa-solid fa-cloud-rain"></i>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <p class="card-text">
+                        <span id="current_hour">11</span>:<span
+                          id="current_minutes"
+                          >00</span
+                        >
+                        - <span id="current_weekday">Saturday</span>,
+                        <span id="current_date">10</span>
+                        <span id="current_month">Oct</span>
+                        <span id="current_year">`22</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -65,17 +69,25 @@
               id="location-input"
             />
             <div class="input-group-append" id="button-addon4">
-              <button class="btn btn-outline-secondary" type="button" id="search_button">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="search_button"
+              >
                 🔎
               </button>
-              <button class="btn btn-outline-secondary" type="button" id="location_button">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="location_button"
+              >
                 📍
               </button>
             </div>
           </div>
-          <div class="city"><a href="">Paris</a></div>
-          <div class="city"><a href="">Berlin</a></div>
-          <div class="city"><a href="">NewYork</a></div>
+          <div class="city_link"><a href="">Paris</a></div>
+          <div class="city_link"><a href="">Berlin</a></div>
+          <div class="city_link"><a href="">NewYork</a></div>
           <hr />
           <h5>Weather details</h5>
           <div class="row cloudy">
@@ -143,7 +155,11 @@
       </div>
     </div>
     <div class="footer_link">
-      <a href="https://github.com/AnastasiiaPiatak/WeatherForecast" target="_blank">Open-source code</a>, by Anastasiia Piatak
+      <a
+        href="https://github.com/AnastasiiaPiatak/WeatherForecast"
+        target="_blank"
+        >Open-source code</a
+      >, by Anastasiia Piatak
     </div>
     <script src="src/javascript.js"></script>
   </body>

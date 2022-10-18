@@ -12,39 +12,30 @@ body {
   background-color: #f1f2f4;
 }
 
-.current_city {
+.card-body{
+  padding: 5px;
+}
+/*Main part of the card*/
+.main_part{
   position: absolute;
   top: 60%;
-  left: 1%;
+  bottom: 2%;
+  margin: 2px;
+  padding: 2px;
 }
 #current_temp{
-  font-size: 250%;
+  font-size: 9vmin;
+  margin: 10px;
+ 
 }
 #city{
-  font-size: 80%;
+  font-size: 6vmin;
 }
 
 .current_emoji {
-  position: absolute;
-  top: 65%;
-  right: 0;
-  font-size: 400%;
-}
+    font-size: 6vmin;
+    padding: 5px;
 
-.current_data {
-  position: absolute;
-  bottom: 5%;
-  left: 3%;
-  font-size: 20%;
-
-}
-
-.current_emoji_data {
-  position: absolute;
-  bottom: 5%;
-  right: 0;
-  font-size: 100%;
-  margin: 0;
 }
 
 .card-group {
@@ -59,17 +50,17 @@ body {
 
 .card-text {
   font-size: 2.5vmin;
+  padding: 5px;
 }
-
+/*Second part of the card*/
 .col-8,
 .col-4,
-.city {
+.city_link {
   margin: 2% 0;
 }
-.col-2 {
-  text-align: center;
-  font-size: 2vmin;
-}
+
+
+/*Future temperature*/
 .day_emoji {
   font-size: 6vmin;
 }
@@ -79,6 +70,8 @@ body {
 .temperature {
   text-align: center;
 }
+
+/*Footer*/
 .footer_link{
   text-align: center;
 }
