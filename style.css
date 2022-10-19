@@ -6,25 +6,24 @@ body {
   background-image: url(img/white_rain.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+
 }
 
 .addition {
   background-color: #f1f2f4;
 }
 
-.card-body{
-  padding: 5px;
-}
+
 /*Main part of the card*/
 .main_part{
-  position: absolute;
+  position: sticky;
   top: 60%;
   bottom: 2%;
   margin: 2px;
   padding: 2px;
 }
 #current_temp{
-  font-size: 9vmin;
+  font-size: 12vmin;
   margin: 10px;
  
 }
@@ -53,11 +52,25 @@ body {
   padding: 5px;
 }
 /*Second part of the card*/
-.col-8,
-.col-4,
+
 .city_link {
   margin: 2% 0;
+  padding: 0 15px;
 }
+
+h5{
+  margin: 2% 0;
+  padding: 0 5px;
+}
+
+.cloudy,
+.humidity,
+.wind,
+.rain {
+  margin: 2% 0;
+  padding: 0 3px;
+}
+
 
 
 /*Future temperature*/
