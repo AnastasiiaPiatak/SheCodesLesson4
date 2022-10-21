@@ -6,50 +6,49 @@ body {
   background-image: url(img/white_rain.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
 .addition {
   background-color: #f1f2f4;
 }
 
-
 /*Main part of the card*/
-.main_part{
+.main_part {
   position: sticky;
   top: 60%;
   bottom: 2%;
   margin: 2px;
   padding: 2px;
 }
-#current_temp{
+#current_temp {
   font-size: 12vmin;
-  margin: 10px;
- 
+  margin: 10px 0 10px 10px;
 }
-#city{
+
+.current_city {
+  padding: 20px 15px 0 15px;
+}
+#city {
   font-size: 6vmin;
 }
 
 .current_emoji {
-    font-size: 6vmin;
-    padding: 5px;
-
+  font-size: 6vmin;
+  padding: 20px 15px 0 15px;
 }
 
 .card-group {
   margin: 5% 10%;
 }
 
-
-#cels, #fahr, .dash{
+#units {
   font-size: 3vmin;
+  padding: 30px 10px 10px 0;
 }
-
 
 .card-text {
   font-size: 2.5vmin;
-  padding: 5px;
+  padding: 0 15px;
 }
 /*Second part of the card*/
 
@@ -58,7 +57,7 @@ body {
   padding: 0 15px;
 }
 
-h5{
+h5 {
   margin: 2% 0;
   padding: 0 5px;
 }
@@ -70,8 +69,6 @@ h5{
   margin: 2% 0;
   padding: 0 3px;
 }
-
-
 
 /*Future temperature*/
 .day_emoji {
@@ -85,6 +82,6 @@ h5{
 }
 
 /*Footer*/
-.footer_link{
+.footer_link {
   text-align: center;
 }
