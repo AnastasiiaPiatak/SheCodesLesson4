@@ -48,21 +48,24 @@ function showWeather() {
 }
 
 function changeWeather(response) {
+  //console.log(response.data);
   let currentLocation = document.querySelector("#location-input");
   let temp = document.querySelector("#current_temp");
   let city = document.querySelector("#city");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind_speed");
   let cloudy = document.querySelector("#cloudy");
-  let weather_discription = document.querySelector("#weather_discription");
+  //let weather_discription = document.querySelector("#weather_discription");
+  let icon = document.querySelector("#current_emoji");
   let rain = document.querySelector("#rain");
 
-  temp.innerHTML = `${Math.round(response.data.main.temp)}°`;
+  temp.innerHTML = `${Math.round(response.data.main.temp)}`;
   city.innerHTML = `${currentLocation.value}`;
   humidity.innerHTML = `${Math.round(response.data.main.humidity)}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
-  weather_discription.innerHTML = `${response.data.weather[0].main}`;
+  //weather_discription.innerHTML = `${response.data.weather[0].main}`;
+  icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   rain.innerHTML = `${response.data.rain["1h"]}mm`;
 }
 
