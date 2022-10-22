@@ -7,16 +7,26 @@ body {
   background-size: cover;
   background-repeat: no-repeat;*/
   color: #484d51;
-  background-color: #8facc0;
+  border-color: #253E45;
+  background: linear-gradient(211deg, rgb(17, 18, 18) 8%, rgb(102, 212, 241) 94%);
+ 
+  /*background-color: #8facc0;*/
 }
+
 
 .addition {
-  background-color: #727e87;
-  color: #484d51;
+  background-color: #253E45;
+  
+  
 }
 
-a {
-  color: #3d4144;
+#units a{
+  color: #383c3f;
+}
+
+.city_link a, 
+.footer_link a {
+  color: #131317;
 }
 
 /*Main part of the card*/
@@ -37,6 +47,8 @@ a {
 }
 #city {
   font-size: 6vmin;
+    color: #932a08;
+
 }
 
 #current_emoji {
@@ -44,7 +56,7 @@ a {
 }
 
 .card-group {
-  margin: 5% 10%;
+  margin: 5% 15%;
 }
 
 #units {
@@ -59,12 +71,12 @@ a {
 /*Second part of the card*/
 
 .form-control {
-  background-color: #727e87;
+  background-color: transparent;
   border: 1px solid #6c757d;
 }
 
 ::placeholder {
-  color: #484d51 !important;
+      color: #932a08 !important;
 }
 
 
@@ -77,6 +89,7 @@ a {
 h5 {
   margin: 2% 0;
   padding: 0 5px;
+  color: #932a08;
 }
 
 .cloudy,
@@ -89,7 +102,7 @@ h5 {
 
 /*Future temperature*/
 .future {
-  background-color: #d2e4f1;
+  background-color: #64aec1;
   color: #484d51;
 }
 
