@@ -40,7 +40,8 @@ year.innerHTML = now.getFullYear();
 
 /////////////////Change Weather////////////////////////
 
-function showWeather() {
+function showWeather(event) {
+  event.preventDefault();
   let currentLocation = document.querySelector("#location-input");
   let apiKey = `72bb9dab46b9ec3d65f423c63f27a9b8`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentLocation.value}&appid=${apiKey}&units=metric`;
@@ -49,6 +50,7 @@ function showWeather() {
 
 function changeWeather(response) {
   //console.log(response.data);
+  celsCurrentTemp = response.data.main.temp;
   let currentLocation = document.querySelector("#location-input");
   let temp = document.querySelector("#current_temp");
   let city = document.querySelector("#city");
@@ -59,7 +61,7 @@ function changeWeather(response) {
   let icon = document.querySelector("#current_emoji");
   let rain = document.querySelector("#rain");
 
-  temp.innerHTML = `${Math.round(response.data.main.temp)}`;
+  temp.innerHTML = `${Math.round(celsCurrentTemp)}`;
   city.innerHTML = `${currentLocation.value}`;
   humidity.innerHTML = `${Math.round(response.data.main.humidity)}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
@@ -81,13 +83,14 @@ function showGeolocation(position) {
 let location_button = document.querySelector("#location_button");
 location_button.addEventListener("click", getCurrentPosition);
 
-function getCurrentPosition() {
+function getCurrentPosition(event) {
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(showGeolocation);
 }
 
 function showCurrentTemp(response) {
   let current_temp = document.querySelector("#current_temp");
-  current_temp.innerHTML = `${Math.round(response.data.main.temp)}°`;
+  current_temp.innerHTML = `${Math.round(response.data.main.temp)}`;
 
   let current_city = document.querySelector("#city");
   current_city.innerHTML = `${response.data.name}`;
@@ -101,11 +104,36 @@ function showCurrentTemp(response) {
   let cloudy = document.querySelector("#cloudy");
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
 
-  let weather_discription = document.querySelector("#weather_discription");
-  weather_discription.innerHTML = `${response.data.weather[0].main}`;
+  //let weather_discription = document.querySelector("#weather_discription");
+  //weather_discription.innerHTML = `${response.data.weather[0].main}`;
 
   let rain = document.querySelector("#rain");
   rain.innerHTML = `${response.data.rain["1h"]}mm`;
 }
 
+//////////////////Convert////////////////////
 
+function convertFahr(event){
+event.preventDefault();
+cels.classList.remove("active");
+fahr.classList.add("active");
+let celsValue = document.querySelector("#current_temp");
+let fahrValue = (celsCurrentTemp * 9) / 5 + 32;
+celsValue.innerHTML = Math.round(fahrValue);
+}
+
+function convertCels(event){
+  event.preventDefault();
+  fahr.classList.remove("active");
+  cels.classList.add("active");
+  let celsValue = document.querySelector("#current_temp");
+  celsValue.innerHTML = Math.round(celsCurrentTemp); 
+}
+
+let celsCurrentTemp = null;
+
+let fahr = document.querySelector("#fahr");
+fahr.addEventListener("click", convertFahr);
+
+let cels = document.querySelector("#cels");
+cels.addEventListener("click", convertCels);
