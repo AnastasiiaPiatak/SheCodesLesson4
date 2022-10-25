@@ -67,7 +67,7 @@ function changeWeather(response) {
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
   //weather_discription.innerHTML = `${response.data.weather[0].main}`;
-  icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  icon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   rain.innerHTML = `${response.data.rain["1h"]}mm`;
 }
 
