@@ -71,8 +71,8 @@ function changeWeather(response) {
   rain.innerHTML = `${response.data.rain["1h"]}mm`;
 }
 
-let button = document.querySelector("#search_button");
-button.addEventListener("click", showWeather);
+let button = document.querySelector("#search_form");
+button.addEventListener("submit", showWeather);
 
 ////////////////////Geolocation///////////////////////////
 function showGeolocation(position) {

@@ -78,19 +78,21 @@
 
       <div class="card addition">
         <div class="card-body">
-          <div class="input-group">
-            <input
+          <form id="search_form">
+            <div class="input-group">
+              <input
               type="text"
               class="form-control"
               placeholder="Another location"
               aria-label="Another location with two button addons"
               aria-describedby="button-addon4"
               id="location-input"
+              autocomplete="off"
             />
             <div class="input-group-append" id="button-addon4">
               <button
                 class="btn btn-outline-secondary"
-                type="button"
+                type="submit"
                 id="search_button"
               >
                 🔎
@@ -104,6 +106,7 @@
               </button>
             </div>
           </div>
+        </form>
           <div class="city_link"><a href="#">Paris</a></div>
           <div class="city_link"><a href="#">Berlin</a></div>
           <div class="city_link"><a href="#">NewYork</a></div>
