@@ -97,7 +97,8 @@ function getCurrentPosition(event) {
 
 function showCurrentTemp(response) {
   let current_temp = document.querySelector("#current_temp");
-  current_temp.innerHTML = `${Math.round(response.data.main.temp)}`;
+  celsCurrentTemp = response.data.main.temp;
+  current_temp.innerHTML = `${Math.round(celsCurrentTemp)}`;
 
   let current_city = document.querySelector("#city");
   current_city.innerHTML = `${response.data.name}`;
@@ -113,6 +114,12 @@ function showCurrentTemp(response) {
 
   let weather_discription = document.querySelector("#weather_discription");
   weather_discription.innerHTML = `${response.data.weather[0].main}`;
+
+  let icon = document.querySelector("#current_emoji");
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let rain = document.querySelector("#rain");
   rain.innerHTML = `${response.data.rain["1h"]}mm`;
