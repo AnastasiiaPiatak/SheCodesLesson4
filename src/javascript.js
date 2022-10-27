@@ -26,12 +26,12 @@ let months = [
 let hour = document.querySelector("#current_hour");
 let minutes = document.querySelector("#current_minutes");
 hour.innerHTML = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
+if (hour.inner < 10) {
+  hour.innerHTML = `0${hour}`;
 }
 minutes.innerHTML = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
+if (minutes.innerHTML < 10) {
+  minutes.innerHTML = `0${now.getMinutes()}`;
 }
 
 let weekday = document.querySelector("#current_weekday");
@@ -46,42 +46,40 @@ year.innerHTML = now.getFullYear();
 
 /////////////////Change Weather////////////////////////
 
-function showWeather(event) {
-  event.preventDefault();
-  let currentLocation = document.querySelector("#location-input");
+function showWeather(city) {
+  //let currentLocation = document.querySelector("#location-input");
   let apiKey = `72bb9dab46b9ec3d65f423c63f27a9b8`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentLocation.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(changeWeather);
 }
 
 function changeWeather(response) {
-  //console.log(response.data);
+  console.log(response.data);
   celsCurrentTemp = response.data.main.temp;
-  let currentLocation = document.querySelector("#location-input");
   let temp = document.querySelector("#current_temp");
   let city = document.querySelector("#city");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind_speed");
   let cloudy = document.querySelector("#cloudy");
-  //let weather_discription = document.querySelector("#weather_discription");
+  let weather_discription = document.querySelector("#weather_discription");
   let icon = document.querySelector("#current_emoji");
   let rain = document.querySelector("#rain");
 
   temp.innerHTML = `${Math.round(celsCurrentTemp)}`;
-  city.innerHTML = `${currentLocation.value}`;
+  city.innerHTML = `${response.data.name}`;
   humidity.innerHTML = `${Math.round(response.data.main.humidity)}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
-  //weather_discription.innerHTML = `${response.data.weather[0].main}`;
+  weather_discription.innerHTML = `${response.data.weather[0].main}`;
   icon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  rain.innerHTML = `${response.data.rain["1h"]}mm`;
-}
 
-let button = document.querySelector("#search_form");
-button.addEventListener("submit", showWeather);
+  //rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
+  //if (( response.data.rain == undefined)) {
+    //console.log(response.data.rain);}
+}
 
 ////////////////////Geolocation///////////////////////////
 function showGeolocation(position) {
@@ -113,8 +111,8 @@ function showCurrentTemp(response) {
   let cloudy = document.querySelector("#cloudy");
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
 
-  //let weather_discription = document.querySelector("#weather_discription");
-  //weather_discription.innerHTML = `${response.data.weather[0].main}`;
+  let weather_discription = document.querySelector("#weather_discription");
+  weather_discription.innerHTML = `${response.data.weather[0].main}`;
 
   let rain = document.querySelector("#rain");
   rain.innerHTML = `${response.data.rain["1h"]}mm`;
@@ -146,3 +144,16 @@ fahr.addEventListener("click", convertFahr);
 
 let cels = document.querySelector("#cels");
 cels.addEventListener("click", convertCels);
+
+////////////////Default/////////////////
+showWeather("Kyiv");
+
+///////////////FindWeather////////////////
+let button = document.querySelector("#search_form");
+button.addEventListener("submit", findWeather);
+
+function findWeather(event) {
+  event.preventDefault();
+  let city = document.querySelector("#location-input");
+  showWeather(city.value);
+}
