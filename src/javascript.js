@@ -26,7 +26,13 @@ let months = [
 let hour = document.querySelector("#current_hour");
 let minutes = document.querySelector("#current_minutes");
 hour.innerHTML = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
 minutes.innerHTML = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 
 let weekday = document.querySelector("#current_weekday");
 weekday.innerHTML = days[now.getDay()];
@@ -67,7 +73,10 @@ function changeWeather(response) {
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
   //weather_discription.innerHTML = `${response.data.weather[0].main}`;
-  icon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   rain.innerHTML = `${response.data.rain["1h"]}mm`;
 }
 
@@ -113,21 +122,21 @@ function showCurrentTemp(response) {
 
 //////////////////Convert////////////////////
 
-function convertFahr(event){
-event.preventDefault();
-cels.classList.remove("active");
-fahr.classList.add("active");
-let celsValue = document.querySelector("#current_temp");
-let fahrValue = (celsCurrentTemp * 9) / 5 + 32;
-celsValue.innerHTML = Math.round(fahrValue);
+function convertFahr(event) {
+  event.preventDefault();
+  cels.classList.remove("active");
+  fahr.classList.add("active");
+  let celsValue = document.querySelector("#current_temp");
+  let fahrValue = (celsCurrentTemp * 9) / 5 + 32;
+  celsValue.innerHTML = Math.round(fahrValue);
 }
 
-function convertCels(event){
+function convertCels(event) {
   event.preventDefault();
   fahr.classList.remove("active");
   cels.classList.add("active");
   let celsValue = document.querySelector("#current_temp");
-  celsValue.innerHTML = Math.round(celsCurrentTemp); 
+  celsValue.innerHTML = Math.round(celsCurrentTemp);
 }
 
 let celsCurrentTemp = null;
