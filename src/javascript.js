@@ -26,8 +26,8 @@ let months = [
 let hour = document.querySelector("#current_hour");
 let minutes = document.querySelector("#current_minutes");
 hour.innerHTML = now.getHours();
-if (hour.inner < 10) {
-  hour.innerHTML = `0${hour}`;
+if (hour.innerHTML < 10) {
+  hour.innerHTML = `0${now.getHours()}`;
 }
 minutes.innerHTML = now.getMinutes();
 if (minutes.innerHTML < 10) {
@@ -78,7 +78,7 @@ function changeWeather(response) {
 
   //rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
   //if (( response.data.rain == undefined)) {
-    //console.log(response.data.rain);}
+  //console.log(response.data.rain);}
 }
 
 ////////////////////Geolocation///////////////////////////
