@@ -76,10 +76,10 @@ function changeWeather(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-
   rain.innerHTML = `---`;
-  if (response.data.rain != undefined){
-    rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;}
+  if (response.data.rain != undefined) {
+    rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
+  }
   //if (( response.data.rain == undefined)) {
   //console.log(response.data.rain);}
 }
@@ -160,6 +160,7 @@ cels.addEventListener("click", convertCels);
 
 ////////////////Default/////////////////
 showWeather("Kyiv");
+showForecast();
 
 ///////////////FindWeather////////////////
 let button = document.querySelector("#search_form");
@@ -169,4 +170,26 @@ function findWeather(event) {
   event.preventDefault();
   let city = document.querySelector("#location-input");
   showWeather(city.value);
+}
+
+//////////Forecast//////////////
+
+function showForecast() {
+  let day_forecast = document.querySelector("#future");
+  let day_forecastHTML = `<div class = "card-group">`;
+  days.forEach(function (day) {
+    day_forecastHTML =
+      day_forecastHTML +
+      ` <div class="card future">
+        <div class="card-body">
+          <h5 class="day">${day}</h5>
+          <p class="day_emoji"><i class="fa-solid fa-cloud-sun-rain"></i></p>
+          <p class="temperature">14°/7°</p>
+        </div> </div>
+        `;
+  });
+
+  day_forecastHTML = day_forecastHTML + `</div>`;
+
+  day_forecast.innerHTML = day_forecastHTML;
 }

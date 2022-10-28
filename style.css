@@ -83,6 +83,7 @@ a.active:hover {
 
 .day{
   font-family: 'Yeseva One', cursive;
+  text-transform: capitalize;
 }
 /*Second part of the card*/
 
@@ -132,10 +133,14 @@ h5 {
   font-size: 6vmin;
 }
 
+
+
 .day,
 .day_emoji,
 .temperature {
   text-align: center;
+  text-transform: capitalize;
+  
 }
 
 /*Footer*/
