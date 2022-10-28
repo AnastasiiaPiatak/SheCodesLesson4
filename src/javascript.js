@@ -76,7 +76,10 @@ function changeWeather(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-  //rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
+
+  rain.innerHTML = `---`;
+  if (response.data.rain != undefined){
+    rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;}
   //if (( response.data.rain == undefined)) {
   //console.log(response.data.rain);}
 }
@@ -122,7 +125,10 @@ function showCurrentTemp(response) {
   );
 
   let rain = document.querySelector("#rain");
-  rain.innerHTML = `${response.data.rain["1h"]}mm`;
+  rain.innerHTML = `---`;
+  if (response.data.rain != undefined) {
+    rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
+  }
 }
 
 //////////////////Convert////////////////////
