@@ -129,6 +129,7 @@ function showCurrentTemp(response) {
   if (response.data.rain != undefined) {
     rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
   }
+  findForecast(response.data.coord);
 }
 
 //////////////////Convert////////////////////
