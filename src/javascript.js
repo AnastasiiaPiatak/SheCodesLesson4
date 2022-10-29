@@ -226,3 +226,56 @@ function findForecast(coordinates) {
   console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
+
+
+////////////LinksWeather///////////////
+function findParisLinkWeather() {
+  let apiKey = "6e6ec494746b5229a9f2d526478c924c";
+  let city_link = document.querySelector("#paris").innerHTML;
+  console.log(city_link);
+ 
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_link}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(changeWeather);
+  console.log(apiUrl);
+}
+
+function findLondonLinkWeather() {
+  let apiKey = "6e6ec494746b5229a9f2d526478c924c";
+  let city_link = document.querySelector("#london").innerHTML;
+  console.log(city_link);
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_link}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(changeWeather);
+  console.log(apiUrl);
+}
+
+function findPNYLinkWeather() {
+  let apiKey = "6e6ec494746b5229a9f2d526478c924c";
+  let city_link = document.querySelector("#ny").innerHTML;
+  console.log(city_link);
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_link}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(changeWeather);
+  console.log(apiUrl);
+}
+
+
+let pLink = document.querySelector("#paris");
+pLink.addEventListener("click", findParisLinkWeather);
+
+let lLink = document.querySelector("#london");
+lLink.addEventListener("click", findLondonLinkWeather);
+
+let NYLink = document.querySelector("#ny");
+NYLink.addEventListener("click", findPNYLinkWeather);
+
+
+
+ 
+
+
+
+
+
+
+
