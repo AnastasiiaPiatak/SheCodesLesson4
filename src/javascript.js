@@ -80,8 +80,8 @@ function changeWeather(response) {
   if (response.data.rain != undefined) {
     rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
   }
-  //if (( response.data.rain == undefined)) {
-  //console.log(response.data.rain);}
+
+  findForecast(response.data.coord);
 }
 
 ////////////////////Geolocation///////////////////////////
@@ -160,7 +160,7 @@ cels.addEventListener("click", convertCels);
 
 ////////////////Default/////////////////
 showWeather("Kyiv");
-showForecast();
+
 
 ///////////////FindWeather////////////////
 let button = document.querySelector("#search_form");
@@ -173,23 +173,56 @@ function findWeather(event) {
 }
 
 //////////Forecast//////////////
+function formatDay(weekdays){
+  let date = new Date (weekdays*1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return  days[day];
 
-function showForecast() {
+
+}
+
+function showForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let day_forecast = document.querySelector("#future");
   let day_forecastHTML = `<div class = "card-group">`;
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay, index) {
+    if (index<6){
     day_forecastHTML =
       day_forecastHTML +
       ` <div class="card future">
         <div class="card-body">
-          <h5 class="day">${day}</h5>
-          <p class="day_emoji"><i class="fa-solid fa-cloud-sun-rain"></i></p>
-          <p class="temperature">14°/7°</p>
+          <h5 class="day">${formatDay(forecastDay.dt)}</h5>
+          <img class="day_emoji" src = "https://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt = "Weather icon">
+          <p class="temperature">${Math.round(
+            forecastDay.temp.max
+          )}°/${Math.round(forecastDay.temp.min)}°</p>
         </div> </div>
-        `;
+        `;}
   });
 
   day_forecastHTML = day_forecastHTML + `</div>`;
 
   day_forecast.innerHTML = day_forecastHTML;
+}
+
+function findForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "a43564c91a6c605aeb564c9ed02e3858";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+
+  console.log(apiUrl);
+  axios.get(apiUrl).then(showForecast);
 }
