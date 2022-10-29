@@ -44,6 +44,42 @@ month.innerHTML = months[now.getMonth()];
 let year = document.querySelector("#current_year");
 year.innerHTML = now.getFullYear();
 
+///////////////Design///////////////////
+
+function design() {
+  if (weather_description.innerHTML === "Clear") {
+    document.body.style.backgroundColor = "rgb(232 255 227)";
+    document.getElementById("main").style.borderColor = "rgb(177 206 181)";
+    document.getElementById("main").style.background =
+      "linear-gradient(90deg, rgb(255, 127, 91) 0%, rgb(210, 235, 205) 100%)";
+
+    document.getElementById("addition").style.backgroundColor = "#d2ebcd";
+
+    //let forecast_color = document.getElementsByClassName("future"); //Get the first element with the class name
+    //forecast_color[0].style.backgroundColor = "blue";
+
+    let forecast_color = document.getElementsByClassName("future");
+    for (let i = 0; i < forecast_color.length; i++) {
+      forecast_color[i].style.backgroundColor = "#f09477";
+    }
+
+    
+  } else {
+    document.body.style.backgroundColor = "#9eadb8";
+    document.getElementById("main").style.borderColor = "#253E45";
+    document.getElementById("main").style.background =
+      "linear-gradient(211deg, rgb(17, 18, 18) 8%, rgb(102, 212, 241) 94%)";
+
+    document.getElementById("addition").style.backgroundColor = "#253E45";
+    //document.getElementsByClassName("future")[0].style.backgroundColor ="#64aec1";
+  }
+}
+
+//white: background: linear-gradient(128deg, rgb(123, 233, 246) 0%, rgb(255, 255, 255) 88%);
+//drizzle: background: linear-gradient(148deg, rgb(234, 234, 233) 0%, rgb(19, 20, 105) 100%);
+
+
+
 /////////////////Change Weather////////////////////////
 
 function showWeather(city) {
@@ -61,7 +97,7 @@ function changeWeather(response) {
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind_speed");
   let cloudy = document.querySelector("#cloudy");
-  let weather_discription = document.querySelector("#weather_discription");
+  let weather_description = document.querySelector("#weather_description");
   let icon = document.querySelector("#current_emoji");
   let rain = document.querySelector("#rain");
 
@@ -70,7 +106,7 @@ function changeWeather(response) {
   humidity.innerHTML = `${Math.round(response.data.main.humidity)}%`;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
-  weather_discription.innerHTML = `${response.data.weather[0].main}`;
+  weather_description.innerHTML = `${response.data.weather[0].main}`;
   icon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -82,6 +118,7 @@ function changeWeather(response) {
   }
 
   findForecast(response.data.coord);
+  design();
 }
 
 ////////////////////Geolocation///////////////////////////
@@ -115,8 +152,8 @@ function showCurrentTemp(response) {
   let cloudy = document.querySelector("#cloudy");
   cloudy.innerHTML = `${Math.round(response.data.clouds.all)}%`;
 
-  let weather_discription = document.querySelector("#weather_discription");
-  weather_discription.innerHTML = `${response.data.weather[0].main}`;
+  let weather_description = document.querySelector("#weather_description");
+  weather_description.innerHTML = `${response.data.weather[0].main}`;
 
   let icon = document.querySelector("#current_emoji");
   icon.setAttribute(
@@ -130,6 +167,7 @@ function showCurrentTemp(response) {
     rain.innerHTML = `${Math.round(response.data.rain[`1h`])}mm`;
   }
   findForecast(response.data.coord);
+  design();
 }
 
 //////////////////Convert////////////////////
@@ -162,7 +200,6 @@ cels.addEventListener("click", convertCels);
 ////////////////Default/////////////////
 showWeather("Kyiv");
 
-
 ///////////////FindWeather////////////////
 let button = document.querySelector("#search_form");
 button.addEventListener("submit", findWeather);
@@ -174,8 +211,8 @@ function findWeather(event) {
 }
 
 //////////Forecast//////////////
-function formatDay(weekdays){
-  let date = new Date (weekdays*1000);
+function formatDay(weekdays) {
+  let date = new Date(weekdays * 1000);
   let day = date.getDay();
   let days = [
     "Sunday",
@@ -186,9 +223,7 @@ function formatDay(weekdays){
     "Friday",
     "Saturday",
   ];
-  return  days[day];
-
-
+  return days[day];
 }
 
 function showForecast(response) {
@@ -197,26 +232,29 @@ function showForecast(response) {
   let day_forecast = document.querySelector("#future");
   let day_forecastHTML = `<div class = "card-group">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index<6){
-    day_forecastHTML =
-      day_forecastHTML +
-      ` <div class="card future">
+    if (index < 6) {
+      day_forecastHTML =
+        day_forecastHTML +
+        ` <div class="card future">
         <div class="card-body">
           <h5 class="day">${formatDay(forecastDay.dt)}</h5>
-          <img class="day_emoji" src = "https://openweathermap.org/img/wn/${
+          <img  src = "https://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
-          }@2x.png"
+          }@2x.png" 
+          class="day_emoji"
           alt = "Weather icon">
           <p class="temperature">${Math.round(
             forecastDay.temp.max
           )}°/${Math.round(forecastDay.temp.min)}°</p>
         </div> </div>
-        `;}
+        `;
+    }
   });
 
   day_forecastHTML = day_forecastHTML + `</div>`;
 
   day_forecast.innerHTML = day_forecastHTML;
+  design();
 }
 
 function findForecast(coordinates) {
@@ -228,13 +266,12 @@ function findForecast(coordinates) {
   axios.get(apiUrl).then(showForecast);
 }
 
-
 ////////////LinksWeather///////////////
 function findParisLinkWeather() {
   let apiKey = "6e6ec494746b5229a9f2d526478c924c";
   let city_link = document.querySelector("#paris").innerHTML;
   console.log(city_link);
- 
+
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_link}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(changeWeather);
   console.log(apiUrl);
@@ -260,7 +297,6 @@ function findPNYLinkWeather() {
   console.log(apiUrl);
 }
 
-
 let pLink = document.querySelector("#paris");
 pLink.addEventListener("click", findParisLinkWeather);
 
@@ -269,14 +305,3 @@ lLink.addEventListener("click", findLondonLinkWeather);
 
 let NYLink = document.querySelector("#ny");
 NYLink.addEventListener("click", findPNYLinkWeather);
-
-
-
- 
-
-
-
-
-
-
-

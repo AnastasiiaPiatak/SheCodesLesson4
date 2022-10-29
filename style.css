@@ -3,19 +3,16 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.main {
-  /*background-image: url(img/white_rain.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;*/
+#main {
+  
   color: #484d51;
   border-color: #253E45;
   background: linear-gradient(211deg, rgb(17, 18, 18) 8%, rgb(102, 212, 241) 94%);
  
-  /*background-color: #8facc0;*/
-}
+ }
 
 
-.addition {
+#addition {
   background-color: #253E45;
   
   
@@ -114,7 +111,7 @@ h5 {
   font-family: 'Yeseva One', cursive;
 }
 
-.discription,
+.description,
 .cloudy,
 .humidity,
 .wind,
@@ -124,22 +121,23 @@ h5 {
 }
 
 /*Future temperature*/
-.future {
+.future{
   background-color: #64aec1;
   color: #484d51;
 }
 
 .day_emoji {
-  font-size: 6vmin;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 
 
 .day,
-.day_emoji,
 .temperature {
-  text-align: center;
-  text-transform: capitalize;
+    text-align: center;
+  
   
 }
 
