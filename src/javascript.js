@@ -50,35 +50,80 @@ function design() {
   if (weather_description.innerHTML === "Clear") {
     document.body.style.backgroundColor = "rgb(232 255 227)";
     document.getElementById("main").style.borderColor = "rgb(177 206 181)";
+    document.getElementById("addition").style.borderColor = "rgb(177 206 181)";
     document.getElementById("main").style.background =
       "linear-gradient(90deg, rgb(255, 127, 91) 0%, rgb(210, 235, 205) 100%)";
-
     document.getElementById("addition").style.backgroundColor = "#d2ebcd";
-
-    //let forecast_color = document.getElementsByClassName("future"); //Get the first element with the class name
-    //forecast_color[0].style.backgroundColor = "blue";
 
     let forecast_color = document.getElementsByClassName("future");
     for (let i = 0; i < forecast_color.length; i++) {
       forecast_color[i].style.backgroundColor = "#f09477";
     }
-
-    
-  } else {
+  } else if (weather_description.innerHTML === "Rain") {
     document.body.style.backgroundColor = "#9eadb8";
     document.getElementById("main").style.borderColor = "#253E45";
+    document.getElementById("addition").style.borderColor = "#253E45";
     document.getElementById("main").style.background =
       "linear-gradient(211deg, rgb(17, 18, 18) 8%, rgb(102, 212, 241) 94%)";
-
     document.getElementById("addition").style.backgroundColor = "#253E45";
-    //document.getElementsByClassName("future")[0].style.backgroundColor ="#64aec1";
+
+    let forecast_color = document.getElementsByClassName("future");
+    for (let i = 0; i < forecast_color.length; i++) {
+      forecast_color[i].style.backgroundColor = "#64AEC1";
+    }
+  } else if (weather_description.innerHTML === "Snow") {
+    document.getElementById("main").style.background =
+      "linear-gradient(128deg, rgb(123, 233, 246) 0%, rgb(255, 255, 255) 88%)";
+    document.getElementById("addition").style.backgroundColor = "#FFFFFF";
+    document.getElementById("main").style.borderColor = "#CCF7FC";
+    document.getElementById("addition").style.borderColor = "#CCF7FC";
+    document.body.style.backgroundColor = "#E7FBFD";
+
+    let forecast_color = document.getElementsByClassName("future");
+    for (let i = 0; i < forecast_color.length; i++) {
+      forecast_color[i].style.backgroundColor = "#A6F0F9";
+    }
+  } else if (
+    weather_description.innerHTML === "Clouds" ||
+    weather_description.innerHTML === "Drizzle"
+  ) {
+    document.body.style.backgroundColor = "#9695B3";
+    document.getElementById("main").style.borderColor = "#253E45";
+    document.getElementById("addition").style.borderColor = "#253E45";
+    document.getElementById("main").style.background =
+      "linear-gradient(313deg, rgb(224, 226, 241) 0%, rgb(23, 17, 74) 100%)";
+    document.getElementById("addition").style.backgroundColor = "#C4C5DA";
+
+    let forecast_color = document.getElementsByClassName("future");
+    for (let i = 0; i < forecast_color.length; i++) {
+      forecast_color[i].style.backgroundColor = "#65628B";
+    }
+  } else if (weather_description.innerHTML === "Thunderstorm") {
+    document.body.style.backgroundColor = "#fdebe5";
+    document.getElementById("main").style.borderColor = "#253E45";
+    document.getElementById("addition").style.borderColor = "#253E45";
+    document.getElementById("main").style.background =
+      "linear-gradient(126deg, rgb(246, 88, 5) 0%, rgb(151, 9, 191) 100%)";
+    document.getElementById("addition").style.backgroundColor = "#9f15b8";
+
+    let forecast_color = document.getElementsByClassName("future");
+    for (let i = 0; i < forecast_color.length; i++) {
+      forecast_color[i].style.backgroundColor = "#D33B4A";
+    }
+  } else {
+    document.body.style.backgroundColor = "#7aab97";
+    document.getElementById("main").style.borderColor = "#253E45";
+    document.getElementById("addition").style.borderColor = "#253E45";
+    document.getElementById("main").style.background =
+      "linear-gradient(to right, rgb(52, 232, 158), rgb(15, 52, 67))";
+    document.getElementById("addition").style.backgroundColor = "#13494D";
+
+    let forecast_color = document.getElementsByClassName("future");
+    for (let i = 0; i < forecast_color.length; i++) {
+      forecast_color[i].style.backgroundColor = "rgb(45 163 120)";
+    }
   }
 }
-
-//white: background: linear-gradient(128deg, rgb(123, 233, 246) 0%, rgb(255, 255, 255) 88%);
-//drizzle: background: linear-gradient(148deg, rgb(234, 234, 233) 0%, rgb(19, 20, 105) 100%);
-
-
 
 /////////////////Change Weather////////////////////////
 
